@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senate Fragrance - Luxury Perfume Oils</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-circle">
+                    <span class="logo-s">S</span>
+                </div>
+                <span class="logo-text">SENATE FRAGRANCE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cart-icon" onclick="toggleCart()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="m1 1 4 4 16 0 -1 11 -14 0 -4 -4"></path>
+                </svg>
+                <span class="cart-count" id="cart-count">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>SENATE FRAGRANCE</h1>
+                    <p class="hero-subtitle">Premium Fragrance Oils</p>
+                    <p class="hero-description">Bold and strong, crafted for those who dare to make a statement</p>
+                    <button class="cta-button" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+                        Explore Collection
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <div class="perfume-bottle">
+                        <div class="bottle-cap"></div>
+                        <div class="bottle-body">
+                            <div class="bottle-label">
+                                <div class="label-logo">S</div>
+                                <div class="label-text">SENATE<br>FRAGRANCE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products">
+            <div class="container">
+                <h2 class="section-title">Our Premium Collection</h2>
+                <div class="product-grid" id="product-grid">
+                    <!-- Products will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Crafted for the Bold</h2>
+                        <p>Senate Fragrance represents the art of bold expression through scent. Each fragrance oil is meticulously crafted with premium ingredients, designed for those who refuse to blend into the crowd.</p>
+                        <p>Our signature leather-inspired packaging reflects the strength and character of our fragrances - bold, sophisticated, and unforgettable.</p>
+                        <div class="about-features">
+                            <div class="feature">
+                                <h4>Premium Oils</h4>
+                                <p>Long-lasting fragrance oils that develop beautifully on skin</p>
+                            </div>
+                            <div class="feature">
+                                <h4>Bold Compositions</h4>
+                                <p>Unique scent profiles for the confident individual</p>
+                            </div>
+                            <div class="feature">
+                                <h4>Artisan Crafted</h4>
+                                <p>Each bottle represents hours of careful formulation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-circle">
+                            <span class="logo-s">S</span>
+                        </div>
+                        <span class="logo-text">SENATE FRAGRANCE</span>
+                    </div>
+                    <p>Bold fragrances for bold individuals</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📧 info@senatefragrance.com</p>
+                    <p>📞 +234 903 423 0188</p>
+                    <p>📍 Nigeria</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Care Instructions</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Senate Fragrance. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Your Cart</h3>
+                <button class="close-cart" onclick="toggleCart()">&times;</button>
+            </div>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <h3>Total: ₦<span id="cart-total">0</span></h3>
+                <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+    <!-- Cart Modal -->
+<div id="checkout-modal" class="checkout-modal" style="display: none;">
+  <div class="checkout-content">
+    <h2>Checkout</h2>
+    
+    <form id="checkout-form">
+      <label>Full Name:</label>
+      <input type="text" required>
+
+      <label>Email:</label>
+      <input type="email" required>
+
+      <label>Phone Number:</label>
+      <input type="tel" required>
+
+      <label>Shipping Address:</label>
+      <textarea rows="3" required></textarea>
+
+      <label>Payment Method:</label>
+      <select required>
+        <option value="">Select</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="transfer">Bank Transfer</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+
+      <div id="order-summary" style="margin-top: 1rem;"></div>
+
+      <button type="submit" class="checkout-btn">Place Order</button>
+      <button type="button" class="close-checkout" onclick="toggleCheckout()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
