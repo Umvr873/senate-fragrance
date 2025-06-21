@@ -152,19 +152,20 @@ nav {
 
 .cart-count {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -4px; /* lowered from -8px */
+    right: -10px;
     background: var(--gold);
     color: var(--black);
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 
 /* Hero Section */
 .hero {
@@ -774,7 +775,7 @@ footer {
     font-size: 0.85rem;
     margin-bottom: 4px;
 }
-/* Cart Modal Background */
+/* check out modal */
 .checkout-modal {
   position: fixed;
   top: 0; left: 0;
@@ -793,7 +794,12 @@ footer {
   width: 90%;
   max-width: 500px;
   color: var(--black);
+
+  /* ADD THIS */
+  max-height: 80vh;
+  overflow-y: auto;
 }
+
 
 .checkout-content h2 {
   margin-bottom: 1rem;
