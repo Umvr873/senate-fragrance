@@ -152,31 +152,56 @@
     <h2>Checkout</h2>
     
     <form id="checkout-form">
-      <label>Full Name:</label>
-      <input type="text" required>
+  <label>Full Name:</label>
+  <input type="text" required>
 
-      <label>Email:</label>
-      <input type="email" required>
+  <label>Email:</label>
+  <input type="email" required>
 
-      <label>Phone Number:</label>
-      <input type="tel" required>
+  <label>Phone Number:</label>
+  <input type="tel" required>
 
-      <label>Shipping Address:</label>
-      <textarea rows="3" required></textarea>
+  <label>Country:</label>
+  <select id="country" required>
+    <option value="">Select Country</option>
+    <option value="Nigeria">Nigeria</option>
+    <option value="Ghana">Ghana</option>
+    <option value="South Africa">South Africa</option>
+    <option value="Egypt">Egypt</option>
+    
+    <!-- Add more countries as needed -->
+  </select>
 
-      <label>Payment Method:</label>
-      <select required>
-        <option value="">Select</option>
-        <option value="card">Credit/Debit Card</option>
-        <option value="transfer">Bank Transfer</option>
-        <option value="cod">Cash on Delivery</option>
-      </select>
+  <label>State:</label>
+  <input type="text" required placeholder="e.g., Lagos, Kano, Abuja">
 
-      <div id="order-summary" style="margin-top: 1rem;"></div>
+  <label>City:</label>
+  <input type="text" required placeholder="e.g., Ikeja, Gwarimpa">
 
-      <button type="submit" class="checkout-btn">Place Order</button>
-      <button type="button" class="close-checkout" onclick="toggleCheckout()">Cancel</button>
-    </form>
+  <label>Shipping Method:</label>
+  <select id="shipping-method" required>
+    <option value="">Select Shipping</option>
+    <option value="standard">Standard (₦2,000)</option>
+    <option value="express">Express (₦4,000)</option>
+  </select>
+
+  <label>Shipping Address:</label>
+  <textarea rows="3" required></textarea>
+
+  <label>Payment Method:</label>
+  <select required>
+    <option value="">Select</option>
+    <option value="card">Credit/Debit Card</option>
+    <option value="transfer">Bank Transfer</option>
+    <option value="cod">Cash on Delivery</option>
+  </select>
+
+  <div id="order-summary" style="margin-top: 1rem;"></div>
+
+  <button type="submit" class="checkout-btn">Place Order</button>
+  <button type="button" class="close-checkout" onclick="toggleCheckout()">Cancel</button>
+</form>
+
   </div>
 </div>
 

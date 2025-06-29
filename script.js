@@ -7,7 +7,7 @@ const products = [
         name: "Royal Essence",
         description: "A majestic blend of bergamot, rose, and sandalwood",
         price: 89.99,
-        image: "assets/perf.jpeg",
+        image: "assets/pics/perf.jpeg",
         category: "luxury",
         sizes: {
             "30ml": { price: 89.99, inStock: true },
@@ -21,13 +21,14 @@ const products = [
         name: "Midnight Mystery",
         description: "Deep notes of oud, vanilla, and amber",
         price: 95.99,
-        image: "assets/images/2.jpg",
+        image: "assets/pics/perf 2.jpeg",
         category: "oriental",
         sizes: {
             "30ml": { price: 89.99, inStock: true },
             "50ml": { price: 129.99, inStock: true },
             "100ml": { price: 169.99, inStock: false }
-       }
+        }
+        
     },
 
     {
@@ -35,7 +36,7 @@ const products = [
         name: "Ocean Breeze",
         description: "Fresh marine accord with citrus and cedar",
         price: 79.99,
-        image: "assets/images/3.jpg",
+        image: "assets/pics/perf 3.jpeg",
         category: "fresh",
         sizes: {
             "30ml": { price: 89.99, inStock: true },
@@ -49,7 +50,7 @@ const products = [
         name: "Golden Hour",
         description: "Warm blend of jasmine, honey, and musk",
         price: 87.99,
-        image: "assets/images/4.jpg",
+        image: "assets/pics/perf 3.jpeg",
         category: "floral",
         sizes: {
             "30ml": { price: 89.99, inStock: true },
@@ -63,7 +64,7 @@ const products = [
         name: "Urban Legends",
         description: "Modern fusion of leather, spices, and woods",
         price: 92.99,
-        image: "assets/images/5.jpg",
+        image: "assets/pics/perf 4.jpeg",
         category: "woody",
         sizes: {
             "30ml": { price: 89.99, inStock: true },
@@ -76,7 +77,7 @@ const products = [
         name: "Garden Paradise",
         description: "Floral bouquet of peony, lily, and green tea",
         price: 84.99,
-        image: "assets/images/6.jpg",
+        image: "assets/pics/perf 5.jpeg",
         category: "floral",
         sizes: {
             "30ml": { price: 89.99, inStock: true },
@@ -316,21 +317,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 function toggleCheckout() {
-    const modal = document.getElementById('checkout-modal');
-    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-    document.body.style.overflow = modal.style.display === 'block' ? 'hidden' : 'auto';
+  const modal = document.getElementById('checkout-modal');
+  modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+  document.body.style.overflow = modal.style.display === 'block' ? 'hidden' : 'auto';
 
-    // Show order summary
-    const summary = document.getElementById('order-summary');
-    if (summary && cart.length > 0) {
-        summary.innerHTML = `
-            <h4>Order Summary</h4>
-            <ul>
-                ${cart.map(item => `
-                    <li>${item.name} (${item.size}) x${item.quantity} - ${formatPrice(item.price * item.quantity)}</li>
-                `).join('')}
-            </ul>
-            <strong>Total: ${formatPrice(cart.reduce((sum, item) => sum + item.price * item.quantity, 0))}</strong>
-        `;
+  // Show order summary
+  const summary = document.getElementById('order-summary');
+  if (summary && cart.length > 0) {
+    const shippingSelect = document.getElementById('shipping-method');
+    let shippingCost = 0;
+    if (shippingSelect) {
+      const method = shippingSelect.value;
+      shippingCost = method === 'express' ? 4000 : method === 'standard' ? 2000 : 0;
     }
+
+    const itemsTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const finalTotal = itemsTotal + shippingCost;
+
+    summary.innerHTML = `
+      <h4>Order Summary</h4>
+      <ul>
+        ${cart.map(item => `
+          <li>${item.name} (${item.size}) x${item.quantity} - ${formatPrice(item.price * item.quantity)}</li>
+        `).join('')}
+      </ul>
+      <p>Shipping: ${formatPrice(shippingCost)}</p>
+      <strong>Total: ${formatPrice(finalTotal)}</strong>
+    `;
+  }
 }
+
